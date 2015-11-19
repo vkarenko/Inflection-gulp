@@ -1,0 +1,10 @@
+.idea
+.sass-cache
+databases
+node_modules
+packages
+peoplesmart
+ps-fed
+redis
+storm
+storm_admin
