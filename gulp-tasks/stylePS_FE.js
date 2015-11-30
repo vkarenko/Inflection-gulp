@@ -16,20 +16,20 @@ var gulp = require('gulp'),
 
 
 // Browser Sync 
-var config = {
-	proxy: {
-		target: 'http://ps-local.psm.local',
-		ws: true
-	},
-	online: true,
-	open: 'ui',
-	tunnel: 'vkarenko',
-	host: 'localhost',
-	port: 8080,
-	logPrefix: 'PS'
-};
 gulp.task('serverPS', function() {
-	browserSync(config);
+	browserSync.init({
+		proxy: {
+			target: 'http://ps-local.psm.local',
+			ws: true
+		},
+		online: true,
+		open: 'ui',
+		tunnel: 'vkarenko',
+		host: 'localhost',
+		port: 8080,
+		logPrefix: 'PS'
+	})
+	//browserSync(config);
 });
 
 
@@ -83,8 +83,6 @@ gulp.task('custom_stylePS_FE', function() {
 			sourceMap: true,
 			errLogToConsole: true
 		}))
-		// .pipe(prefixer())
-		// .pipe(cssmin())
 		.pipe(sourcemaps.write('/peoplesmart/FrontEndWeb/Content/PS/css/maps'))
 		.pipe(size({
 			showFiles: true
@@ -92,7 +90,7 @@ gulp.task('custom_stylePS_FE', function() {
 		.pipe(gulp.dest(paths.build.css_custom));
 });
 
-gulp.task('watch_custom_stylePS_FE', function(){
+gulp.task('watch_custom_stylePS_FE', function() {
 	watch([paths.watch.style, paths.watch.style_STORM], function(event, cb) {
 		gulp.start('custom_stylePS_FE');
 	});
