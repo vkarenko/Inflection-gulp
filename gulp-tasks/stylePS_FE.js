@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 	size = require('gulp-size'),
 	// prefixer = require('gulp-autoprefixer'),		// add vendor prefixes
 	// cssmin = require('gulp-minify-css'),
-	browserSync = require('browser-sync'),
+	browserSync = require('browser-sync').create(),
 	reload = browserSync.reload;
 
 
