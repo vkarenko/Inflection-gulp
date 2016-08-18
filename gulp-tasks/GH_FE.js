@@ -12,10 +12,10 @@ var gulp = require('gulp'),
 	browserSync = require('browser-sync').create(),
 	reload = browserSync.reload;
 
-	
-	
+
+
 var browsers = ["last 2 versions", "> 1%", "opera 12.1", 'ie 9'];
-	
+
 
 
 // Browser Sync 
@@ -25,7 +25,7 @@ gulp.task('GH_SERV', function() {
 		port: 8080,
 		host: 'gh-local.inflection.net',
 		open: 'ui',
-		files: ['gh/FrontEndWeb/ContentOutput/css/*.css', 'gh/MemberWeb/ContentOutput/css/*.css'],
+		files: ['gh/FrontEndWeb/ContentOutput/css/*.css', 'gh/MemberWeb/ContentOutput/css/**/*.css'],
 		browser: 'd:/install/chrome-win32/chrome.exe',
 		//codeSync: false,
 		//online: true,

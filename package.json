@@ -1,5 +1,5 @@
 {
-  "name": "projects",
+  "name": "inflection-dev",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -24,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/vkarenko/Inflection-gulp.git"
   },
-  "author": "",
+  "author": "vkarenko",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/vkarenko/Inflection-gulp/issues"
