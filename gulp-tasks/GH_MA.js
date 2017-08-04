@@ -26,7 +26,7 @@ var paths = {
 	},
 	src: {
 		style: 'gh/MemberWeb/ContentBuild/scss/**/*.scss',
-		styleMVC: 'gh/MemberWeb/ContentBuild/scss/mvc/pages/*.scss'
+		styleMVC: 'gh/MemberWeb/ContentBuild/scss/mvc/pages/credit-check.scss'
 	},
 	watch: {
 		style: 'gh/MemberWeb/ContentBuild/scss/**/*.scss',
@@ -45,10 +45,7 @@ gulp.task('style_GH_MA', function() {
 	gulp.src(paths.src.style)
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
-		.pipe(sass({
-			sourceMap: true,
-			errLogToConsole: true
-		}))
+		.pipe(sass())
 		//.pipe(autoprefixer({browsers: browsers}))
 		//.pipe(pixrem('16px', {browsers: browsers}))
 		.pipe(sourcemaps.write())
@@ -61,6 +58,7 @@ gulp.task('style_GH_MA', function() {
 gulp.task('watch_GH_MA', function() {
 	watch([paths.watch.style, paths.watch.common], function(event, cb) {
 		//gulp.start(['style_GH_MA', 'style_GH_MA_MVC']);
+		//gulp.start(['style_GH_MA']);
 		gulp.start(['style_GH_MA_MVC']);
 	});
 });

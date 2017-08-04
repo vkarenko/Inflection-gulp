@@ -25,8 +25,9 @@ gulp.task('GH_SERV', function() {
 		port: 8080,
 		host: 'gh-local.inflection.net',
 		open: 'ui',
-		files: ['gh/FrontEndWeb/ContentOutput/css/*.css', 'gh/MemberWeb/ContentOutput/css/**/*.css'],
-		browser: 'd:/install/chrome-win32/chrome.exe',
+		//files: ['gh/FrontEndWeb/ContentOutput/css/**/*.css', 'gh/MemberWeb/ContentOutput/css/**/*.css'],
+		files: 'gh/MemberWeb/ContentOutput/css/**/*.css',
+		browser: 'c:/install/chrome-win32/chrome.exe',
 		//codeSync: false,
 		//online: true,
 		//tunnel: 'vkarenko',
@@ -37,10 +38,13 @@ gulp.task('GH_SERV', function() {
 
 var paths = {
 	build: {
-		css: 'gh/FrontEndWeb/ContentOutput/css'
+		css: 'gh/FrontEndWeb/ContentOutput/css',
+		cssMVC: 'gh/FrontEndWeb/ContentOutput/css/mvc/pages/'
 	},
 	src: {
-		style: 'gh/FrontEndWeb/ContentBuild/scss/**/*.scss'
+		style: 'gh/FrontEndWeb/ContentBuild/scss/**/*.scss',
+		styleMVC: 'gh/FrontEndWeb/ContentBuild/scss/mvc/pages/*.scss'
+
 	},
 	watch: {
 		style: 'gh/FrontEndWeb/ContentBuild/scss/**/*.scss',
@@ -70,6 +74,20 @@ gulp.task('style_GH_FE', function() {
 			showFiles: true
 		}))
 		.pipe(gulp.dest(paths.build.css));
+});
+
+gulp.task('style_GH_FE_MVC', function() {
+	gulp.src(paths.src.styleMVC)
+		.pipe(plumber())
+		.pipe(sourcemaps.init())
+		.pipe(sass())
+		//.pipe(autoprefixer({browsers: browsers}))
+		//.pipe(pixrem('16px', {browsers: browsers}))
+		.pipe(sourcemaps.write())
+		.pipe(size({
+			showFiles: true
+		}))
+		.pipe(gulp.dest(paths.build.cssMVC));
 });
 
 gulp.task('watch_GH_FE', function() {

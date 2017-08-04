@@ -10,8 +10,8 @@ var gulp = require('gulp'),
 	replace = require('gulp-replace'),
 
 	paths = {
-		src: 'SVG/svg-src/nav/*.svg',
-		out: 'SVG/svg-out/nav'
+		src: 'SVG/svg-src/vika/*.svg',
+		out: 'SVG/svg-out/vika'
 	},
 
 // SVG sprite config
@@ -25,15 +25,20 @@ var gulp = require('gulp'),
 				padding: 0
 			},
 			id: {
-				generator: 'nav-%s',
+				//generator: 'nav-%s',
 				separator: '--',
 				pseudo: '~',
 				whitespace: '_'
 			},
 			dest: 'sep-svg'
 		},
+		svg: {
+			// remove add uniq string to class names
+			namespaceClassnames: false
+		},
 		mode: {
-			symbol: true
+			symbol: true,
+			css: true
 		}
 	};
 
@@ -47,7 +52,7 @@ gulp.task('GH_SVG', function() {
 		}))
 		.pipe(cheerio({
 			run: function ($) {
-				$('[fill]').removeAttr('fill');
+				//$('[fill]').removeAttr('fill');
 				$('[style]').removeAttr('style');
 			},
 			parserOptions: { xmlMode: true }
